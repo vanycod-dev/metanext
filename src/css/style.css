@@ -34,6 +34,7 @@ header {
   justify-content: space-between;
   align-items: center;
   background: var(--card-bg);
+  background: linear-gradient(90deg,rgba(237, 228, 242, 1) 0%, rgba(245, 250, 247, 1) 50%, rgba(237, 228, 242, 1) 100%);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   top: 0;
   z-index: 100;
@@ -41,7 +42,7 @@ header {
 
 header h1 {
   font-size: 2rem;
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 header h1 span {

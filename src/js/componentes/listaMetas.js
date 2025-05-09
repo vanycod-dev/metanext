@@ -1,4 +1,5 @@
 import { obtenerMetas } from "../memoria/memoria.js";
+import { crearModalEditar } from "./modalEditar.js";
 
 export const listaMetas = () => {
     const metas = obtenerMetas();
@@ -56,7 +57,12 @@ export const listaMetas = () => {
         tarjetas.appendChild(tarjeta);
 
         tarjeta.addEventListener("click", () => {
-            console.log("Meta seleccionada:", meta);
+           const modal = crearModalEditar(meta, (metaActualizada) => {
+                // Callback cuando se guardan cambios
+                console.log('Meta actualizada:', metaActualizada);
+                // Aquí actualizarías la UI o harías el fetch para guardar
+            });
+            document.body.appendChild(modal);
         });
     });
 
