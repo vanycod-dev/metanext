@@ -23,3 +23,15 @@ export const actualizarMeta = (meta) => {
         alert("Meta no encontrada");
     }
 }
+
+export const eliminarMeta = (id) => {
+    const metas = obtenerMetas();
+    const metaIndex = metas.findIndex(m => m.id === id);
+    if (metaIndex !== -1) {
+        metas.splice(metaIndex, 1);
+        localStorage.setItem(METAS, JSON.stringify(metas));
+    } else {
+        console.error("Meta no encontrada");
+        alert("Meta no encontrada");
+    }
+}

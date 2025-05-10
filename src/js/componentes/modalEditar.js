@@ -1,4 +1,6 @@
 import { editarMeta } from '../memoria/crearMeta.js';
+import { eliminarMeta } from '../memoria/memoria.js';
+import { renderRoute } from '../utils/route.js';
 import { crearGrupo } from './compartidos/Group.js';
 import { crearInput } from './compartidos/Input.js';
 import { crearModal } from './compartidos/Modal.js';
@@ -49,6 +51,13 @@ form.appendChild(textarea);
     submitBtn.className = 'btn-guardar';
     form.appendChild(submitBtn);
 
+    // Botón eliminar
+    const deleteBtn = document.createElement('button');
+    deleteBtn.type = 'button';
+    deleteBtn.textContent = 'Eliminar Meta';
+    deleteBtn.className = 'btn-eliminar';
+    form.appendChild(deleteBtn);
+
     // Manejar envío
     form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -63,6 +72,16 @@ form.appendChild(textarea);
         // ✅ Verifica si se editó correctamente
         if (editarMeta(meta.id, cambios)) {
             onGuardar(cambios); // Solo se ejecuta si la edición fue exitosa
+        }
+    });
+
+    deleteBtn.addEventListener('click', () => {
+        if (confirm("¿Estás seguro de que deseas eliminar esta meta?")) {
+            // Aquí iría la lógica para eliminar la meta
+            // Por ejemplo, podrías llamar a una función eliminarMeta(meta.id);
+            console.log(`Meta con ID ${meta.id} eliminada.`);
+            eliminarMeta(meta.id); // Llama a la función de eliminación
+            onGuardar(meta.id); // Llama al callback para actualizar la UI
         }
     });
 

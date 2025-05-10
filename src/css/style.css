@@ -3,6 +3,8 @@
   --secondary-color: #6a0dad;
   --accent-color: #e2b0ff;
   --text-color: #333;
+  --button-bg: #df4949;
+  --button-bg-hov: #e22b2b;
   --light-bg: #f9f5ff;
   --card-bg: #ffffff;
   --progress-bar: linear-gradient(90deg, var(--primary-color), #c77dff);
@@ -318,6 +320,23 @@ button[type="submit"]:hover {
 
 .fade-out .modal-container {
     transform: translateY(-20px) !important;
+}
+
+.btn-eliminar {
+    background: var(--button-bg);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 2rem;
+    margin: 0 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-eliminar:hover {
+    background: var(--button-bg-hov);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(223, 73, 73, 0.3);
 }
 
 @keyframes shimmer {

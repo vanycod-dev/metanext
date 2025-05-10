@@ -13,6 +13,13 @@ export const listaMetas = () => {
     const tarjetas = document.createElement("div");
     tarjetas.classList.add("lista-metas");
 
+    if (metas.length === 0) {
+        const mensaje = document.createElement("p");
+        mensaje.textContent = "No hay metas registradas.";
+        container.appendChild(mensaje);
+        return container;
+    }
+
     metas.forEach(meta => {
         const tarjeta = document.createElement("div");
         tarjeta.classList.add("meta-item");
