@@ -1,4 +1,4 @@
-import { guardarMeta } from "./memoria.js";
+import { actualizarMeta, guardarMeta, obtenerMetas, } from "./memoria.js";
 
 export const crearMeta = (meta) => {
     const nuevaMeta = {
@@ -16,4 +16,26 @@ export const crearMeta = (meta) => {
     console.log("Meta creada:", nuevaMeta);
     guardarMeta(nuevaMeta);
     return nuevaMeta;
+}
+
+export const editarMeta = (id, cambios) => {
+    const metaId = parseInt(id);
+    const metas = obtenerMetas();
+    const metaIndex = metas.findIndex(meta => meta.id === metaId);
+    
+    if (metaIndex === -1) {
+        console.error("Meta no encontrada");
+        alert("Meta no encontrada");
+        return false; // Retorna false para manejar el error
+    }
+
+    // ✅ Elimina la condición incorrecta y actualiza directamente
+    const metaActualizada = { 
+        ...metas[metaIndex], // Mantenemos los datos existentes
+        ...cambios            // Aplicamos los cambios
+    };
+    
+    actualizarMeta(metaActualizada);
+    console.log("Meta editada:", metaActualizada);
+    return true; // Retorna true para indicar éxito
 }

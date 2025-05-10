@@ -1,3 +1,4 @@
+import { editarMeta } from '../memoria/crearMeta.js';
 import { crearGrupo } from './compartidos/Group.js';
 import { crearInput } from './compartidos/Input.js';
 import { crearModal } from './compartidos/Modal.js';
@@ -17,10 +18,11 @@ export function crearModalEditar(meta, onGuardar) {
         meta.prioridad
     ));
 
-    form.appendChild(crearInput("Descripción", "descripcion", "textarea", {
-        value: meta.descripcion,
-        required: true
-    }));
+const textarea = crearInput("Descripción", "descripcion", "textarea", {
+    required: true
+});
+textarea.querySelector('textarea').textContent = meta.descripcion;
+form.appendChild(textarea);
 
     form.appendChild(crearSelect("Estado", "estado",
         ["Pendiente", "En progreso", "Completada"],
@@ -50,9 +52,18 @@ export function crearModalEditar(meta, onGuardar) {
     // Manejar envío
     form.addEventListener('submit', (e) => {
         e.preventDefault();
+        if (!form.checkValidity()) {
+            alert("Por favor, completa todos los campos.");
+            return;
+        }
+        
         const formData = new FormData(form);
         const cambios = Object.fromEntries(formData.entries());
-        onGuardar({ ...meta, ...cambios });
+        
+        // ✅ Verifica si se editó correctamente
+        if (editarMeta(meta.id, cambios)) {
+            onGuardar(cambios); // Solo se ejecuta si la edición fue exitosa
+        }
     });
 
     return crearModal(form, {

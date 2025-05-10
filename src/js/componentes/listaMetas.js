@@ -46,6 +46,8 @@ export const listaMetas = () => {
 
         progressContainer.appendChild(progressBar);
 
+        // console.log(meta);
+
         // Agregar elementos a la tarjeta
         tarjeta.appendChild(nombre);
         tarjeta.appendChild(prioridad);
@@ -59,6 +61,7 @@ export const listaMetas = () => {
         tarjeta.addEventListener("click", () => {
            const modal = crearModalEditar(meta, (metaActualizada) => {
                 // Callback cuando se guardan cambios
+                window.location.reload(); // Recargar la página para ver los cambios
                 console.log('Meta actualizada:', metaActualizada);
                 // Aquí actualizarías la UI o harías el fetch para guardar
             });

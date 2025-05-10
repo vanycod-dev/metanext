@@ -3,6 +3,7 @@ import { crearMeta } from "../memoria/crearMeta.js";
 import { crearInput } from "./compartidos/Input.js";
 import { crearSelect } from "./compartidos/Select.js";
 import { crearGrupo } from "./compartidos/Group.js";
+import { renderRoute } from "../utils/route.js";
 
 export function crearFormularioMeta() {
     const container = document.createElement("div");
@@ -53,6 +54,7 @@ export function crearFormularioMeta() {
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
         crearMeta(data);
+        renderRoute('meta');
         form.reset();
     });
 
