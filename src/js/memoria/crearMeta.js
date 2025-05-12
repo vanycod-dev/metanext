@@ -29,10 +29,10 @@ export const editarMeta = (id, cambios) => {
         return false; // Retorna false para manejar el error
     }
 
-    // ✅ Elimina la condición incorrecta y actualiza directamente
+    
     const metaActualizada = { 
-        ...metas[metaIndex], // Mantenemos los datos existentes
-        ...cambios            // Aplicamos los cambios
+        ...metas[metaIndex], // Mantiene los datos existentes
+        ...cambios            // Aplica los cambios
     };
     
     actualizarMeta(metaActualizada);

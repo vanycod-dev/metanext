@@ -1,4 +1,3 @@
-// src/js/componentes/compartidos/Input.js
 export function crearInput(labelText, id, type, attrs = {}) {
     const section = document.createElement("div");
     section.classList.add("section");

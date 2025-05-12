@@ -9,7 +9,6 @@ import { crearSelect } from './compartidos/Select.js';
 export function crearModalEditar(meta, onGuardar) {
     const form = document.createElement('form');
     
-    // Campos editables reutilizando componentes
     form.appendChild(crearInput("Nombre", "nombre", "text", { 
         value: meta.nombre,
         required: true 
@@ -69,7 +68,7 @@ form.appendChild(textarea);
         const formData = new FormData(form);
         const cambios = Object.fromEntries(formData.entries());
         
-        // ✅ Verifica si se editó correctamente
+        // ✅ Verifica si se editó correctamente ✅
         if (editarMeta(meta.id, cambios)) {
             onGuardar(cambios); // Solo se ejecuta si la edición fue exitosa
         }
@@ -77,10 +76,9 @@ form.appendChild(textarea);
 
     deleteBtn.addEventListener('click', () => {
         if (confirm("¿Estás seguro de que deseas eliminar esta meta?")) {
-            // Aquí iría la lógica para eliminar la meta
-            // Por ejemplo, podrías llamar a una función eliminarMeta(meta.id);
+
             console.log(`Meta con ID ${meta.id} eliminada.`);
-            eliminarMeta(meta.id); // Llama a la función de eliminación
+            eliminarMeta(meta.id);
             onGuardar(meta.id); // Llama al callback para actualizar la UI
         }
     });

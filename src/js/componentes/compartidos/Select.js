@@ -1,4 +1,3 @@
-// src/js/componentes/compartidos/Select.js
 export function crearSelect(labelText, id, opciones, selectedValue = "") {
     const section = document.createElement("div");
     section.classList.add("section");
