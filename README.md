@@ -11,8 +11,6 @@
 ## 🛠️ Tecnologías utilizadas
 
 - **Lenguajes:** JavaScript, HTML, CSS
-- **Frameworks y bibliotecas:** (Especificar si se utilizan)
-- **Herramientas de desarrollo:** (Especificar si se utilizan)
 
 ## 📂 Estructura del proyecto
 
